@@ -11,9 +11,9 @@ const ItemCtrl = (function() {
   //Data Structure
   const data = {
     items: [
-      {id: 0, name: 'Samsung Electronics', price:N50000},
-      {id: 1, name: 'Dinning Table', price:N100000},
-      {id: 2, name: 'Wallpapers', price:N80000},
+      {id: 0, name: 'Samsung Electronics', price:50000},
+      {id: 1, name: 'Dinning Table', price:100000},
+      {id: 2, name: 'Wallpapers', price:80000},
     ],
     currentitem: null,
     totalPrice: 0
@@ -33,6 +33,16 @@ const UICtrl = (function() {
 })();
 
 // App Controller 
-const App = (function(ItemCtrl, UiCtrl) {
+const App = (function(ItemCtrl, UICtrl) {
+
+  return {
+    init: function() {
+      console.log('Initialising app...');
+      
+    }
+  }
   
-})();
+})(ItemCtrl, UICtrl);
+
+// Initialising app 
+App.init();
