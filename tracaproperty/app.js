@@ -19,7 +19,7 @@ const ItemCtrl = (function() {
     totalPrice: 0
   }
 
-  // Public method
+  // Return Data
   return {
     getItems: function() {
       return data.items;
@@ -32,17 +32,45 @@ const ItemCtrl = (function() {
 
 // UI Controller 
 const UICtrl = (function() {
+
+  const UISelectors = {
+    itemList: '#item-list'
+  }
+
+// Public Method  
+  return {
+    populateItemList: function(items) {
+      let html = '';
+
+      items.forEach(function(item) {
+        html += ` <li class="collection-item" id="item-${item.id}">
+        <strong>${item.name}: </strong> <em>${item.price}</em>
+        <a href="#" class="secondary-content">
+        <i class="edit-item fa fa-pencil"></i>
+        </a>
+      </li>`;
+
+      });
+
+      // Insert list items into UI 
+      document.querySelector(UISelectors.itemList).innerHTML = html;
+    }
+  }
   
 })();
 
 // App Controller 
 const App = (function(ItemCtrl, UICtrl) {
 
+  // Public Method
   return {
     init: function() {
       console.log('Initialising app...');
       const items = ItemCtrl.getItems();
-      console.log(items);
+      
+      // Populate UI list
+      UICtrl.populateItemList(items);
+
       
     }
   }
