@@ -19,8 +19,11 @@ const ItemCtrl = (function() {
     totalPrice: 0
   }
 
-  // Return the data 
+  // Public method
   return {
+    getItems: function() {
+      return data.items;
+    },
     logData: function() {
       return data;
     }
@@ -38,6 +41,8 @@ const App = (function(ItemCtrl, UICtrl) {
   return {
     init: function() {
       console.log('Initialising app...');
+      const items = ItemCtrl.getItems();
+      console.log(items);
       
     }
   }
