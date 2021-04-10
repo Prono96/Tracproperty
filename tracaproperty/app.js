@@ -24,6 +24,14 @@ const ItemCtrl = (function() {
     getItems: function() {
       return data.items;
     },
+    addItem: function(name, price) {
+      // Create ID
+      if(data.items.lenght > 0) {
+
+      } else {
+        ID = 0;
+      }
+    },
     logData: function() {
       return data;
     }
@@ -90,11 +98,13 @@ const App = (function(ItemCtrl, UICtrl) {
     //get form input from UI controller
     const input = UICtrl.getItemInput();
 
-    console.log(input);
+    // Check for name and price input
+    if(input.name !== '' && input.price !== '') {
+    
+      //Add item
+      const newItem = ItemCtrl.addItem(input.name, input.price)
 
-    // if(input.name !== '' && input.price !== '') {
-    //   console.log(123);
-    // }
+    }
 
     e.preventDefault();
   }
