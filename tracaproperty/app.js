@@ -26,6 +26,7 @@ const ItemCtrl = (function() {
     },
     addItem: function(name, price) {
       // Create ID
+      let ID;
       if(data.items.lenght > 0) {
 
       } else {
