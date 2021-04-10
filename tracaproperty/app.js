@@ -27,11 +27,23 @@ const ItemCtrl = (function() {
     addItem: function(name, price) {
       // Create ID
       let ID;
-      if(data.items.lenght > 0) {
+      if(data.items.length > 0) {
+        ID = data.items[data.items.length - 1].id + 1;
 
       } else {
         ID = 0;
       }
+
+      // Making Price to numbers
+      price = parseInt(price);
+
+      // Creating a new item
+      newItem = new Item(ID, name, price);
+
+      // Add to items array
+      data.items.push(newItem);
+
+      return newItem;
     },
     logData: function() {
       return data;
