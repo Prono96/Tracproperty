@@ -61,8 +61,8 @@ const UICtrl = (function() {
 
     getItemInput: function() {
       return {
-        name: querySelector(UISelectors.itemNameInput).value,
-        price: querySelector(UISelectors.itemPriceInput).value
+        name: document.querySelector(UISelectors.itemNameInput).value,
+        price: document.querySelector(UISelectors.itemPriceInput).value
       }
     },
 
@@ -90,9 +90,11 @@ const App = (function(ItemCtrl, UICtrl) {
     //get form input from UI controller
     const input = UICtrl.getItemInput();
 
-    if(input.name !== '' && input.price !== '') {
-      console.log(123);
-    }
+    console.log(input);
+
+    // if(input.name !== '' && input.price !== '') {
+    //   console.log(123);
+    // }
 
     e.preventDefault();
   }
