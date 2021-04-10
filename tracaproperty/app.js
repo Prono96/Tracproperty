@@ -81,7 +81,7 @@ const App = (function(ItemCtrl, UICtrl) {
     // Get UI selectors
     const UISelectors = UICtrl.getSelectors();
     // Add Item Event
-    document.querySelector(UISelectors.addBtn).addEventListener('clck', itemAddSubmit);
+    document.querySelector(UISelectors.addBtn).addEventListener('click', itemAddSubmit);
   }
 
   // Add item submit 
@@ -90,7 +90,9 @@ const App = (function(ItemCtrl, UICtrl) {
     //get form input from UI controller
     const input = UICtrl.getItemInput();
 
-    console.log(input);
+    if(input.name !== '' && input.price !== '') {
+      console.log(123);
+    }
 
     e.preventDefault();
   }
