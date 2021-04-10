@@ -34,7 +34,8 @@ const ItemCtrl = (function() {
 const UICtrl = (function() {
 
   const UISelectors = {
-    itemList: '#item-list'
+    itemList: '#item-list',
+    addBtn: '.add-btn'
   }
 
 // Public Method  
@@ -68,19 +69,33 @@ const App = (function(ItemCtrl, UICtrl) {
 
   // Load EventListener
   const loadEvenListeners = function() {
-    const UISelectors = UICtrl.getSelectors();S
+    // Get UI selectors
+    const UISelectors = UICtrl.getSelectors();
+    // Add Item Event
+    document.querySelector(UISelectors.addBtn).addEventListener('clck', itemAddSubmit);
+  }
+
+  // Add item submit 
+  const itemAddSubmit = function(e) {
+  
+    //get form input from UI controller
+    const input = UICtrl.getItemInput();
+
+    e.preventDefault();
   }
 
   // Public Method
   return {
     init: function() {
-      console.log('Initialising app...');
+      // fetch items from data structure
       const items = ItemCtrl.getItems();
       
       // Populate UI list
       UICtrl.populateItemList(items);
 
-      
+      // Load Event Listeners
+      loadEvenListeners();
+
     }
   }
   
