@@ -35,7 +35,9 @@ const UICtrl = (function() {
 
   const UISelectors = {
     itemList: '#item-list',
-    addBtn: '.add-btn'
+    addBtn: '.add-btn',
+    itemNameInput: '#item-name',
+    itemPriceInput: '#item-price'
   }
 
 // Public Method  
@@ -55,6 +57,13 @@ const UICtrl = (function() {
 
       // Insert list items into UI 
       document.querySelector(UISelectors.itemList).innerHTML = html;
+    },
+
+    getItemInput: function() {
+      return {
+        name: querySelector(UISelectors.itemNameInput).value,
+        price: querySelector(UISelectors.itemPriceInput).value
+      }
     },
 
     getSelectors: function() {
@@ -80,6 +89,8 @@ const App = (function(ItemCtrl, UICtrl) {
   
     //get form input from UI controller
     const input = UICtrl.getItemInput();
+
+    console.log(input);
 
     e.preventDefault();
   }
