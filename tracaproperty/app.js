@@ -103,6 +103,11 @@ const UICtrl = (function() {
       document.querySelector(UISelectors.itemList).insertAdjacentElement('beforeend', li);
     },
 
+    clearInput: function() {
+      document.querySelector(UISelectors.itemNameInput).value = '';
+      document.querySelector(UISelectors.itemPriceInput).value = '';
+    },
+
     getSelectors: function() {
       return UISelectors;
     }
@@ -136,6 +141,8 @@ const App = (function(ItemCtrl, UICtrl) {
       // Add item list to UI
       UICtrl.addListItem(newItem);
 
+      // Clear input field
+      UICtrl.clearInput();
     }
 
     e.preventDefault();
