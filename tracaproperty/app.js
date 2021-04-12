@@ -87,6 +87,22 @@ const UICtrl = (function() {
       }
     },
 
+    addListItem: function(item) {
+      // Create Li element 
+      const li = document.createElement('li');
+      // Add class name
+      li.className = 'collection-item';
+      // Add ID
+      li.id = `item-${item.id}`;
+      // Add HTML
+      li.innerHTML = `<strong>${item.name}: </strong> <em>${item.price}</em>
+      <a href="#" class="secondary-content">
+      <i class="edit-item fa fa-pencil"></i>
+      </a>`;
+      // Insert item
+      document.querySelector(UISelectors.itemList).insertAdjacentElement('beforeend', li);
+    },
+
     getSelectors: function() {
       return UISelectors;
     }
@@ -116,6 +132,9 @@ const App = (function(ItemCtrl, UICtrl) {
     
       //Add item
       const newItem = ItemCtrl.addItem(input.name, input.price)
+
+      // Add item list to UI
+      UICtrl.addListItem(newItem);
 
     }
 
