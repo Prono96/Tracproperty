@@ -11,9 +11,9 @@ const ItemCtrl = (function() {
   //Data Structure
   const data = {
     items: [
-      {id: 0, name: 'Samsung Electronics', price:50000},
-      {id: 1, name: 'Dinning Table', price:100000},
-      {id: 2, name: 'Wallpapers', price:80000},
+      // {id: 0, name: 'Samsung Electronics', price:50000},
+      // {id: 1, name: 'Dinning Table', price:100000},
+      // {id: 2, name: 'Wallpapers', price:80000},
     ],
     currentitem: null,
     totalPrice: 0
@@ -88,6 +88,8 @@ const UICtrl = (function() {
     },
 
     addListItem: function(item) {
+      // Show list item
+      document.querySelector(UISelectors.itemList).style.display = 'block';
       // Create Li element 
       const li = document.createElement('li');
       // Add class name
@@ -106,6 +108,10 @@ const UICtrl = (function() {
     clearInput: function() {
       document.querySelector(UISelectors.itemNameInput).value = '';
       document.querySelector(UISelectors.itemPriceInput).value = '';
+    },
+
+    hidelist: function() {
+      document.querySelector(UISelectors.itemList).style.display = 'none';
     },
 
     getSelectors: function() {
@@ -153,9 +159,14 @@ const App = (function(ItemCtrl, UICtrl) {
     init: function() {
       // fetch items from data structure
       const items = ItemCtrl.getItems();
-      
-      // Populate UI list
+
+      // Check if any items
+      if(items.length === 0) {
+        UICtrl.hidelist();
+      } else {
+         // Populate UI list
       UICtrl.populateItemList(items);
+      }
 
       // Load Event Listeners
       loadEvenListeners();
