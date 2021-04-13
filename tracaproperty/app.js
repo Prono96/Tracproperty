@@ -45,6 +45,20 @@ const ItemCtrl = (function() {
 
       return newItem;
     },
+
+    // Total Price
+    getTotalPrice: function() {
+      let total = 0;
+      // Loop through items and add price
+      data.items.forEach(function(item) {
+        total += item.price;
+      });
+      // Set total price in the data structure
+      data.totalPrice = total;    
+      
+      // Return total
+      return data.totalPrice;
+    },
     logData: function() {
       return data;
     }
@@ -58,7 +72,8 @@ const UICtrl = (function() {
     itemList: '#item-list',
     addBtn: '.add-btn',
     itemNameInput: '#item-name',
-    itemPriceInput: '#item-price'
+    itemPriceInput: '#item-price',
+    totalPrice: '.total-price'
   }
 
 // Public Method  
@@ -114,6 +129,10 @@ const UICtrl = (function() {
       document.querySelector(UISelectors.itemList).style.display = 'none';
     },
 
+    showTotalPrice: function(totalPrice) {
+      document.querySelector(UISelectors.totalPrice).textContent = totalPrice;
+    },
+
     getSelectors: function() {
       return UISelectors;
     }
@@ -146,6 +165,12 @@ const App = (function(ItemCtrl, UICtrl) {
 
       // Add item list to UI
       UICtrl.addListItem(newItem);
+
+      //get total price
+      const totalPrice = ItemCtrl.getTotalPrice();
+
+      // Add total price to UI
+      UICtrl.showTotalPrice(totalPrice);
 
       // Clear input field
       UICtrl.clearInput();
