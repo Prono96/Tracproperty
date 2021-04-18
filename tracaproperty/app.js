@@ -123,7 +123,6 @@ const UICtrl = (function() {
       document.querySelector(UISelectors.itemPriceInput).value = '';
     },
 
-<<<<<<< HEAD
     hidelist: function() {
       document.querySelector(UISelectors.itemList).style.display = 'none';
     },
@@ -132,8 +131,6 @@ const UICtrl = (function() {
       document.querySelector(UISelectors.totalPrice).textContent = totalPrice;
     },
 
-=======
->>>>>>> parent of dd3560b... Added functionality to input field in index.html
     getSelectors: function() {
       return UISelectors;
     }
