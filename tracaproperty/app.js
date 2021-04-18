@@ -11,9 +11,9 @@ const ItemCtrl = (function() {
   //Data Structure
   const data = {
     items: [
-      // {id: 0, name: 'Samsung Electronics', price:50000},
-      // {id: 1, name: 'Dinning Table', price:100000},
-      // {id: 2, name: 'Wallpapers', price:80000},
+      {id: 0, name: 'Samsung Electronics', price:50000},
+      {id: 1, name: 'Dinning Table', price:100000},
+      {id: 2, name: 'Wallpapers', price:80000},
     ],
     currentitem: null,
     totalPrice: 0
@@ -103,8 +103,6 @@ const UICtrl = (function() {
     },
 
     addListItem: function(item) {
-      // Show list item
-      document.querySelector(UISelectors.itemList).style.display = 'block';
       // Create Li element 
       const li = document.createElement('li');
       // Add class name
@@ -125,6 +123,7 @@ const UICtrl = (function() {
       document.querySelector(UISelectors.itemPriceInput).value = '';
     },
 
+<<<<<<< HEAD
     hidelist: function() {
       document.querySelector(UISelectors.itemList).style.display = 'none';
     },
@@ -133,6 +132,8 @@ const UICtrl = (function() {
       document.querySelector(UISelectors.totalPrice).textContent = totalPrice;
     },
 
+=======
+>>>>>>> parent of dd3560b... Added functionality to input field in index.html
     getSelectors: function() {
       return UISelectors;
     }
@@ -184,14 +185,9 @@ const App = (function(ItemCtrl, UICtrl) {
     init: function() {
       // fetch items from data structure
       const items = ItemCtrl.getItems();
-
-      // Check if any items
-      if(items.length === 0) {
-        UICtrl.hidelist();
-      } else {
-         // Populate UI list
+      
+      // Populate UI list
       UICtrl.populateItemList(items);
-      }
 
       // Load Event Listeners
       loadEvenListeners();
