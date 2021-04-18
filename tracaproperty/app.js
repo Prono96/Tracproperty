@@ -103,6 +103,8 @@ const UICtrl = (function() {
     },
 
     addListItem: function(item) {
+      // Show the List
+      document.querySelector(UISelectors.itemList).style.display = 'block';
       // Create Li element 
       const li = document.createElement('li');
       // Add class name
@@ -182,9 +184,14 @@ const App = (function(ItemCtrl, UICtrl) {
     init: function() {
       // fetch items from data structure
       const items = ItemCtrl.getItems();
-      
-      // Populate UI list
+
+      //Check if any items
+      if(items.length === 0) {
+        UICtrl.hidelist();
+      } else {
+         // Populate UI list
       UICtrl.populateItemList(items);
+      }
 
       // Load Event Listeners
       loadEvenListeners();
