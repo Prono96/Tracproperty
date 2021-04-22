@@ -11,11 +11,11 @@ const ItemCtrl = (function() {
   //Data Structure
   const data = {
     items: [
-      {id: 0, name: 'Samsung Electronics', price:50000},
-      {id: 1, name: 'Dinning Table', price:100000},
-      {id: 2, name: 'Wallpapers', price:80000},
+      // {id: 0, name: 'Samsung Electronics', price:50000},
+      // {id: 1, name: 'Dinning Table', price:100000},
+      // {id: 2, name: 'Wallpapers', price:80000},
     ],
-    currentitem: null,
+    currentItem: null,
     totalPrice: 0
   }
 
