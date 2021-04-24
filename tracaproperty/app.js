@@ -155,7 +155,7 @@ const App = (function(ItemCtrl, UICtrl) {
 
       // Get total price
       const totalPrice = ItemCtrl.getTotalPrice();
-      // Add total  to UI
+      // Add total price to UI
       UICtrl.showTotalPrice(totalPrice);
 
 
