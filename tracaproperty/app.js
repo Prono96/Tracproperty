@@ -104,37 +104,6 @@ const UICtrl = (function() {
       }
     },
 
-    addListItem: function(item) {
-      // Show the List
-      document.querySelector(UISelectors.itemList).style.display = 'block';
-      // Create Li element 
-      const li = document.createElement('li');
-      // Add class name
-      li.className = 'collection-item';
-      // Add ID
-      li.id = `item-${item.id}`;
-      // Add HTML
-      li.innerHTML = `<strong>${item.name}: </strong> <em>${item.price}</em>
-      <a href="#" class="secondary-content">
-      <i class="edit-item fa fa-pencil"></i>
-      </a>`;
-      // Insert item
-      document.querySelector(UISelectors.itemList).insertAdjacentElement('beforeend', li);
-    },
-
-    clearInput: function() {
-      document.querySelector(UISelectors.itemNameInput).value = '';
-      document.querySelector(UISelectors.itemPriceInput).value = '';
-    },
-
-    hidelist: function() {
-      document.querySelector(UISelectors.itemList).style.display = 'none';
-    },
-
-    showTotalPrice: function(totalPrice) {
-      document.querySelector(UISelectors.totalPrice).textContent = totalPrice;
-    },
-
     getSelectors: function() {
       return UISelectors;
     }
@@ -165,17 +134,6 @@ const App = (function(ItemCtrl, UICtrl) {
       //Add item
       const newItem = ItemCtrl.addItem(input.name, input.price)
 
-      // Add item list to UI
-      UICtrl.addListItem(newItem);
-
-      //get total price
-      const totalPrice = ItemCtrl.getTotalPrice();
-
-      // Add total price to UI
-      UICtrl.showTotalPrice(totalPrice);
-
-      // Clear input field
-      UICtrl.clearInput();
     }
 
     e.preventDefault();
