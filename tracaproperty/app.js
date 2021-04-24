@@ -1,9 +1,7 @@
 // Storage Controller 
 
-
 // Item Controller 
 const ItemCtrl = (function() {
-  // Item Constructor
   const Item = function(id, name, price){
     this.id = id;
     this.name = name;
@@ -21,7 +19,7 @@ const ItemCtrl = (function() {
     totalPrice: 0
   }
 
-  // Public methods
+  // Return Data
   return {
     getItems: function() {
       return data.items;
@@ -152,12 +150,6 @@ const App = (function(ItemCtrl, UICtrl) {
          // Populate UI list
       UICtrl.populateItemList(items);
       }
-
-      // Get total price
-      const totalPrice = ItemCtrl.getTotalPrice();
-      // Add total price to UI
-      UICtrl.showTotalPrice(totalPrice);
-
 
       // Load Event Listeners
       loadEvenListeners();
