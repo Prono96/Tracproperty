@@ -11,9 +11,9 @@ const ItemCtrl = (function() {
   //Data Structure
   const data = {
     items: [
-      // {id: 0, name: 'Samsung Electronics', price:50000},
-      // {id: 1, name: 'Dinning Table', price:100000},
-      // {id: 2, name: 'Wallpapers', price:80000},
+      {id: 0, name: 'Samsung Electronics', price:50000},
+      {id: 1, name: 'Dinning Table', price:100000},
+      {id: 2, name: 'Wallpapers', price:80000},
     ],
     currentItem: null,
     totalPrice: 0
@@ -24,29 +24,43 @@ const ItemCtrl = (function() {
     getItems: function() {
       return data.items;
     },
+    
     addItem: function(name, price) {
       // Create ID
       let ID;
-      if(data.items.lenght > 0) {
+      if(data.items.length > 0) {
+        ID = data.item[data.item.length - 1].id + 1;
 
       } else {
         ID = 0;
       }
+
+      // Price to numbers 
+      price = parseInt(price);
+
+      // Create new item
+      newItem = new Item(ID, name, price);
+      
+       // Add to items array
+       data.items.push(newItem);
+
+       return newItem;
+       
     },
 
-    // Total Price
-    getTotalPrice: function() {
-      let total = 0;
-      // Loop through items and add price
-      data.items.forEach(function(item) {
-        total += item.price;
-      });
-      // Set total price in the data structure
-      data.totalPrice = total;    
+    // // Total Price
+    // getTotalPrice: function() {
+    //   let total = 0;
+    //   // Loop through items and add price
+    //   data.items.forEach(function(item) {
+    //     total += item.price;
+    //   });
+    //   // Set total price in the data structure
+    //   data.totalPrice = total;    
       
-      // Return total
-      return data.totalPrice;
-    },
+    //   // Return total
+    //   return data.totalPrice;
+    // },
     logData: function() {
       return data;
     }
@@ -114,14 +128,12 @@ const App = (function(ItemCtrl, UICtrl) {
     //get form input from UI controller
     const input = UICtrl.getItemInput();
 
-    // Check for name and price input
+    // // Check for name and price input
     if(input.name !== '' && input.price !== '') {
-    
-      //Add item
+    // //   //Add item
       const newItem = ItemCtrl.addItem(input.name, input.price)
-
     }
-
+    // console.log(input);
     e.preventDefault();
   }
 
@@ -130,14 +142,14 @@ const App = (function(ItemCtrl, UICtrl) {
     init: function() {
       // fetch items from data structure
       const items = ItemCtrl.getItems();
-
+    
       //Check if any items
-      if(items.length === 0) {
-        UICtrl.hidelist();
-      } else {
-         // Populate UI list
+      // if(items.length === 0) {
+      //   UICtrl.hidelist();
+      // } else {
+      //    // Populate UI list
       UICtrl.populateItemList(items);
-      }
+      // }
 
       // Load Event Listeners
       loadEvenListeners();
