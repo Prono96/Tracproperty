@@ -142,6 +142,7 @@ const App = (function(ItemCtrl, UICtrl) {
     init: function() {
       // fetch items from data structure
       const items = ItemCtrl.getItems();
+  
     
       //Check if any items
       // if(items.length === 0) {
