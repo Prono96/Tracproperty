@@ -29,7 +29,7 @@ const ItemCtrl = (function() {
       // Create ID
       let ID;
       if(data.items.length > 0) {
-        ID = data.item[data.item.length - 1].id + 1;
+        ID = data.items[data.items.length - 1].id + 1;
 
       } else {
         ID = 0;
